@@ -1,6 +1,7 @@
 package com.pixel2rom.launcher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MainActivity extends Activity {
