@@ -1,0 +1,25 @@
+service appliance-boot /vendor/bin/appliance-boot.sh
+    oneshot
+    disabled
+    seclabel u:r:su:s0
+service syncthing /vendor/bin/syncthing --home /data/vendor/syncthing --no-browser --no-restart
+    class late_start
+    seclabel u:r:su:s0
+    disabled
+service uvc-gadget /vendor/bin/uvc-gadget-init.sh
+    class late_start
+    oneshot
+    disabled
+    seclabel u:r:su:s0
+service uvc-gadget-off /vendor/bin/uvc-gadget-off.sh
+    class late_start
+    oneshot
+    disabled
+    seclabel u:r:su:s0
+on property:sys.boot_completed=1
+    start appliance-boot
+    start syncthing
+on property:pixel2rom.uvc.enable=1
+    start uvc-gadget
+on property:pixel2rom.uvc.enable=0
+    start uvc-gadget-off

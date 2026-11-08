@@ -1,0 +1,9 @@
+android_app {
+    name: "PixelCamLauncher",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+    certificate: "platform",
+    platform_apis: true,
+    privileged: true,
+}
